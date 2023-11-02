@@ -5,6 +5,7 @@ import imgLogo from "../images/tier_logo.png";
 import imgBottom from "../images/nedbank_s.png";
 import AxiosApi from "../api/AxiosApi";
 import { Input, Button, Container, Items } from "../component/LoginComponent";
+import Modal from "../util/Modal";
 
 const Login = () => {
   // 화면이동을 위해 사용하는 hook
@@ -97,9 +98,9 @@ const Login = () => {
           <Button disabled>SIGN IN</Button>
         )}
       </Items>
-      {/* <Modal open={modalOpen} close={closeModal} header="오류">
+      <Modal open={modalOpen} close={closeModal} header="오류">
         아이디 및 패스워드를 재확인해 주세요.
-      </Modal> */}
+      </Modal>
       <Items className="signup">
         <Link to="/Signup" className="link_style">
           <span>Sign Up</span>
