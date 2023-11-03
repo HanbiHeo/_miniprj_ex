@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Layout from "./component/Layout";
 import MemberList from "./pages/MemberList";
 import Setting from "./pages/Setting";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/MemberList" element={<MemberList />} />
             <Route path="/Setting" element={<Setting />} />
+            <Route path="/Profile" element={<Profile />} />
           </Route>
         </Routes>
       </Router>

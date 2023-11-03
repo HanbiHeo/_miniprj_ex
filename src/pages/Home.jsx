@@ -15,6 +15,7 @@ const Home = () => {
       case 2:
         break;
       case 3:
+        navigate("/profile");
         break;
       case 4:
         navigate("/setting");
