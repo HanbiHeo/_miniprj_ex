@@ -1,4 +1,4 @@
-//레이아웃 (상단바 고정용)
+//레이아웃 (상단바 고정용) 컴포넌트
 
 import { Outlet } from "react-router-dom";
 import Container from "./Constainer";
