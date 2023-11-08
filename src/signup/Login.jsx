@@ -1,26 +1,35 @@
-//로그인
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Modal from "../utils/Modal";
 import imgLogo from "../images/tier_logo.png";
-import imgBottom from "../images/nedbank_s.png";
 import AxiosApi from "../api/AxiosApi";
-import { Input, Button, Container, Items } from "../component/LoginComponent";
-import Modal from "../util/Modal";
+import {
+  Input,
+  Button,
+  Container,
+  Items,
+} from "../component/signup/LoginComponent";
+import imgBottom from "../images/nedbank_s.png";
 
 const Login = () => {
-  // 화면이동을 위해 사용하는 hook
   const navigate = useNavigate();
 
-  // 키보드 입력(로그인은 아이디와 패스워드로 구성)
+  // 키보드 입력
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
+
   // 오류 메시지
   const [idMessage, setIdMessage] = useState("");
   const [pwMessage, setPwMessage] = useState("");
-  //유효성 검사
+
+  // 유효성 검사
   const [isId, setIsId] = useState("");
   const [isPw, setIsPw] = useState("");
-  //팝업처리
+
+  // 모달 내용 변경
+  const [modalContent, setModalContent] = useState("");
+
+  //팝업 처리
   const [modalOpen, setModalOpen] = useState(false);
   const closeModal = () => {
     setModalOpen(false);
@@ -51,21 +60,21 @@ const Login = () => {
       setIsPw(true);
     }
   };
-
   const onClickLogin = async () => {
-    //로그인을 위한 axios 호출 (아래 두줄을 위한 백엔드 구현이 길다...)
+    //로그인을 위한 axios 호출
     const res = await AxiosApi.memberLogin(inputId, inputPw);
     console.log(res.data);
-
     if (res.data === true) {
-      window.localStorage.setItem("userId", inputId); // 브라우저에서 임시로 값을 저장하는 기술[보안을 위해서는 좋지 않음.]
+      window.localStorage.setItem("userId", inputId); // 브라우저에서 임시로 값을 저장하는 기술
       window.localStorage.setItem("userPw", inputPw);
       window.localStorage.setItem("isLogin", "TRUE");
       navigate("/home");
     } else {
       setModalOpen(true);
+      setModalContent("아이디 및 패스워드를 재확인해 주세요.^^");
     }
   };
+
   return (
     <Container>
       <Items className="item1">
@@ -99,7 +108,7 @@ const Login = () => {
         )}
       </Items>
       <Modal open={modalOpen} close={closeModal} header="오류">
-        아이디 및 패스워드를 재확인해 주세요.
+        {modalContent}
       </Modal>
       <Items className="signup">
         <Link to="/Signup" className="link_style">
@@ -112,5 +121,4 @@ const Login = () => {
     </Container>
   );
 };
-
 export default Login;

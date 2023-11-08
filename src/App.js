@@ -1,12 +1,22 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UserStore from "./context/UserStore";
-import Login from "./pages/Login";
+import Login from "./signup/Login";
 import Home from "./pages/Home";
-import Layout from "./component/Layout";
-import MemberList from "./pages/MemberList";
+import Signup from "./signup/Signup";
+import News from "./pages/News";
+import Members from "./pages/Members";
+import MemberInfo from "./pages/MemberInfo";
 import Setting from "./pages/Setting";
 import Profile from "./pages/Profile";
+import Layout from "./component/Layout/Layout";
+import BoardList from "./pages/BoardList";
+import WriteForm from "./component/board/WriteForm";
+import ToDos from "./pages/ToDos";
+import Movies from "./pages/Movies";
+import MyCalendar from "./pages/Calendar";
+import BoardDetail from "./pages/BoardDetail";
+import FruitRadioBtn from "./pages/RadiBtn";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import UserStore from "./context/UserStore";
 
 function App() {
   return (
@@ -14,15 +24,26 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
           <Route element={<Layout />}>
             <Route path="/Home" element={<Home />} />
-            <Route path="/MemberList" element={<MemberList />} />
+            <Route path="/News" element={<News />} />
+            <Route path="/Members" element={<Members />} />
+            <Route path="/Profile/:username" element={<Profile />} />
+            <Route path="/MemberInfo/:id" element={<MemberInfo />} />
             <Route path="/Setting" element={<Setting />} />
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Boards" element={<BoardList />} />
+            <Route path="/BoardDetail/:id" element={<BoardDetail />} />
+            <Route path="/boardWrite" element={<WriteForm />} />
+            <Route path="/Todos" element={<ToDos />} />
+            <Route path="/Movies" element={<Movies />} />
+            <Route path="/Calendar" element={<MyCalendar />} />
+            <Route path="/FruitRadioBtn" element={<FruitRadioBtn />} />
           </Route>
         </Routes>
       </Router>
     </UserStore>
+    // <div className="App">
   );
 }
 

@@ -1,10 +1,8 @@
-//레이아웃 (상단바 고정용) 컴포넌트
-
 import { Outlet } from "react-router-dom";
-import Container from "./Constainer";
-import logoWhite from "../images/tier_logo_white.png";
-import alarmGo from "../images/bell.png";
-import { UserContext } from "../context/UserStore";
+import Container from "./Container";
+import logoWhite from "../../images/tier_logo_white.png";
+import alarmGo from "../../images/bell.png";
+import { UserContext } from "../../context/UserStore";
 import { useContext } from "react";
 
 const Layout = () => {
